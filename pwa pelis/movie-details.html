@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles/hamburgers.min.css" rel="stylesheet">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="description"
+    content="descubre nuevas películas y consulte datos sobre estas.">
+  <meta name="theme-color" content="#385a7c" />
+  
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="PeliLandia">
+  <link rel="apple-touch-icon" href="/assets/icon-152.png">
+  <title>Detalle PELICULAS | PeliLandia</title>
+</head>
+
+<body>
+  <header id="header"></header>
+
+  <main>
+    <button class="go-back-button" onclick="history.back()">Volver</button>
+    <div id="movie-details" class="movie-details">
+      <img src="assets/loading.gif" style="width: 100px; height: 100px; opacity: 1;">
+    </div>
+    <h3 class="movie-imgs-title">Imágenes de la película</h3>
+    <div id="movie-images" class="movie-images">
+      <img src="assets/loading.gif" style="width: 100px; height: 100px; opacity: 1;">
+    </div>
+    <div id="content-cover" aria-hidden="true"></div>
+  </main>
+
+  <footer id="footer"></footer>
+
+  
+  <script src="header.js"></script>
+
+  
+  <script src="scripts/common.js"></script>
+  <script src="scripts/movieDetails.js"></script>
+  <script src="scripts/roundPicturesLayout.js"></script>
+<footer>
+    <p>Agustina Fernández DWN3A</p>
+  </footer>
+</body>
+
+</html>
