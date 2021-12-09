@@ -1,15 +1,11 @@
-
-
-
-
 var myMov = {};
 //   URL 
-let queryValue = getUrlParams(window.location.href).q;
+let queryValue = getUrlParams(window.location.href);
 
  
 function searchMovies(queryString) {  
   const encodedQuery = encodeURI(queryString);
-   fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${queryString}&include_adult=false`)
+   fetch(armarLinkSearchMovies(queryString))
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -18,11 +14,10 @@ function searchMovies(queryString) {
       throw new Error("Network response was not ok. No resource fetched.");
     })
     .then(objData => {
-      moviesArray = objData.results;
+      moviesArray = objData.Search;
       console.log(moviesArray);
-      
-      localStorage.setItem("searchMovies", movieObjsToHTML(moviesArray, 20));
       window.location.replace("search-movies.html");
+      localStorage.setItem("searchMovies", movieObjsToHTML(moviesArray, 20));
     })
     .catch(error => console.error(error));
 }
@@ -30,7 +25,7 @@ function searchMovies(queryString) {
 
 document.getElementById("formu").addEventListener("submit", function (e) {
   e.preventDefault();
-  console.log(document.getElementById("search-input").value)
+  console.log(document.getElementById("search-input").value);
   searchMovies(document.getElementById("search-input").value);
   
 });

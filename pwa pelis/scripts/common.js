@@ -59,12 +59,11 @@ function movieObjsToHTML(dataArray, limit) {
   const moviesArray = [];
   for (let i = 0; i < finalLimit; i++) {
     moviesArray.push(`<article>
-    <a href="movie-details.html?id=${dataArray[i].id}">
+    <a href="movie-details.html?id=${dataArray[i].imdbID}">
       <div class="item__img">
-        <img src="https://image.tmdb.org/t/p/w500${dataArray[i].poster_path}" alt="${dataArray[i].title} poster">
+        <img src="${dataArray[i].Poster}" alt="${dataArray[i].Title} poster">
       </div>
-      <h3 class="item__title">${dataArray[i].title}</h3>
-      <p class="item__description">${dataArray[i].overview}</p>
+      <h3 class="item__title">${dataArray[i].Title}</h3>
     </a>
   </article>`);
   }

@@ -1,19 +1,19 @@
 //  DOM 
 const movieDetails = document.getElementById("movie-details");
-const movieImagesContainer = document.getElementById("movie-images");
 
 //  URL 
 let movieId = getUrlParams(window.location.href).id;
 
 
 window.addEventListener('load', () => {
-  loadMovieData(movieId);
-  loadMovieImages(movieId, 10);
+  if(movieId != undefined && movieId != null){
+    loadMovieData(movieId);
+  }
 });
 
 
 function loadMovieData(id) {
-  fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=4beb6761259147c71086e8f4a4e96308`)
+  fetch(armarLinkMovieDetails(id))
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -22,56 +22,41 @@ function loadMovieData(id) {
     })
     .then(objData => {
       document.title = `${objData.title} | PeliLandia`;
-      const genres = objData.genres.map(genre => `<span>${genre.name}</span>`).join('');
       movieDetails.innerHTML = `
-        <div class="movie-poster"><img src="https://image.tmdb.org/t/p/w500${objData.poster_path}"></div>
-        <h1 class="movie-title">${objData.title}</h1>
-        <p class="movie-vote">${objData.vote_average}</p>
-        <p class="release-date">${objData.release_date}</p>
-        <p class="movie-description">${objData.overview}</p>
-        <p class="movie-genres">${genres}</p>
+        <div class="movie-poster"><img src="${objData.Poster}" id="img-details"></div>
+        <h1 class="movie-title" id="title-details">${objData.Title}</h1>
+        <p class="movie-vote">${objData.imdbRating}</p>
+        <p class="release-date">${objData.Released}</p>
+        <p class="movie-description">${objData.Plot}</p>
+        <p class="movie-genres">${objData.Genre}</p>
+        <button onclick="saveToFavs()"> Agregar a favoritos </button> 
       `;
     })
     .catch(error => console.error(error));
 }
 
+function saveToFavs() {
+  let img = document.getElementById("img-details").src;
+  let title = document.getElementById("title-details").innerText;
+  let fav = {"title": title, "img": img};
+  var allFavs = JSON.parse(localStorage.getItem("favs")) || [];
+  if(allFavs.some(actualFav => actualFav['title'] === title)){
+    alert("Ya fue agregada a favoritos");
+  }
+  else{
+    allFavs.push(fav);
+    localStorage.setItem("favs", JSON.stringify(allFavs));
+  }
+}
+
+function deleteButtonToSave(){
+  let actualString = document.getElementById("movie-details").innerHTML;
+  let finalString = actualString.replace('<button id="buttonfav" onclick="saveToFavs()"> Agregar a favoritos </button>','');
+  return finalString;
+}
 
 
 const mediaQuery830 = window.matchMedia("(hover) and (min-width: 830px)");
-
-
-
-let movieImages = undefined;
-
-
-
-function loadMovieImages(id, amount) {
-  fetch(`https://api.themoviedb.org/3/movie/${id}/images?api_key=4beb6761259147c71086e8f4a4e96308`)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw new Error("Error api");
-    })
-    .then(objData => {
-      const images = [];
-      let i = 0;
-      while (i < objData.backdrops.length && i < amount) {
-        images.push(`<img src="https://image.tmdb.org/t/p/w500${objData.backdrops[i].file_path}">`);
-        i++;
-      }
-      movieImagesContainer.innerHTML = images.join('');
-      movieImages = document.querySelectorAll('#movie-images > img');
-      return movieImages;
-    })
-    .then(images => {
-      
-      if (mediaQuery830.matches) {
-        roundPicturesLayout(images);
-      }
-    })
-    .catch(error => console.error(error));
-}
 
 
 
@@ -82,10 +67,10 @@ function checkMediaQuery(mediaQuery) {
     });
     roundPicturesLayout(movieImages);
   } else {
-    movieImages.forEach(image => {
-      image.style.transform = "unset";
-      image.dataset.roundLayout = "false";
-    });
+    //movieImages.forEach(image => {
+     // image.style.transform = "unset";
+      //image.dataset.roundLayout = "false";
+   // });
   }
 }
 

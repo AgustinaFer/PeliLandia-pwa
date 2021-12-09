@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles/hamburgers.min.css">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="manifest.json">
   <meta name="description"
     content="descubre nuevas películas y consulte datos sobre estas.">
   <meta name="theme-color" content="#385a7c" />
@@ -30,11 +30,8 @@
     <div id="movie-details" class="movie-details">
       <img src="assets/loading.gif" style="width: 100px; height: 100px; opacity: 1;">
     </div>
-    <h3 class="movie-imgs-title">Imágenes de la película</h3>
-    <div id="movie-images" class="movie-images">
-      <img src="assets/loading.gif" alt="CARGANDING" style="width: 100px; height: 100px; opacity: 1;">
-    </div>
     <div id="content-cover" aria-hidden="true"></div>
+    
   </main>
 
   <footer id="footer"></footer>
@@ -45,7 +42,20 @@
   
   <script src="scripts/common.js"></script>
   <script src="scripts/movieDetails.js"></script>
-  <script src="scripts/roundPicturesLayout.js"></script>
+  <script src="scripts/api.js"></script>
+
+  <script>
+    //  service worker.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then((reg) => {
+            console.log('Service worker hecho.', reg);
+          });
+      });
+    }
+  </script>
+
 <footer>
     <p>Agustina Fernández DWN3A</p>
   </footer>

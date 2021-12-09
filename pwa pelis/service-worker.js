@@ -1,13 +1,12 @@
 const preCacheName = "pre-cache-pra-v9",
     
     preCacheFiles = [
-        "/offline.html",
-        "/styles/styles.css",
-        "/styles/hamburgers.min.css",
-        "/assets/logo2.svg",
-        "/assets/imago.svg",
-        "/assets/overlapping-hexagons.svg",
-        "/favicon.ico"
+        "offline.html",
+        "styles/styles.css",
+        "styles/hamburgers.min.css",
+        "assets/imago.svg", 
+        "favicon.ico",
+        "header.js"
     ];
 
 

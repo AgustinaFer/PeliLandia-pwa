@@ -82,8 +82,7 @@ header {
     opacity: 1; }
 
 @media only screen and (min-width: 769px) {
-  header .logo {
-    width: 12rem; } }
+   }
 .dropdown-menu {
   position: relative;
   order: -1; }
@@ -169,14 +168,14 @@ header {
   .search-form {
     min-width: 12rem;
     flex-basis: 0; } }
-/*** main ***/
+
+    /*** main ***/
 main {
   display: flex;
   flex-direction: column;
   position: relative;
   padding: 0.6rem;
   background-color: #000;
-  background-image: url(../assets/overlapping-hexagons.svg);
   background-attachment: fixed;
   min-height: calc(100vh - 70px - 3rem); }
 
@@ -220,7 +219,40 @@ main {
   .movies-container > article > a:hover > .item__img > img {
     transform: scale(1.2); }
 
-/
+.movies-result {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  margin: auto;
+  padding: 0.6rem; }
+  .movies-result > article {
+    margin: 0.6rem;
+    flex-grow: 1; 
+    max-width: 300px;
+    flex-basis: 200px; }
+    .movies-result > article > a > .item__img {
+      border-radius: 5px 5px 0 0;
+      overflow: hidden; }
+      .movies-result > article > a > .item__img > img {
+        width: 100%;
+        display: block;
+        transition: transform 0.5s; }
+    .movies-result > article > a > .item__title {
+      background-color: var(--c-light-red);
+      padding: 0.5rem;
+      color: #fff;
+      box-shadow: 4px 4px inset, -4px -4px inset;
+      text-align: center;
+      text-shadow: 1px 1px 1px #000; }
+    .movies-result > article > a > .item__description {
+      padding: 0.6rem;
+      background-color: var(--c-light-blue);
+      box-shadow: 0 2px 2px #00000075 inset;
+      border-radius: 0 0 5px 5px; }
+  .movies-result > article > a:hover > .item__img > img {
+    transform: scale(1.2); }    
+
 .content-cover {
   position: absolute;
   top: 0;
@@ -285,6 +317,15 @@ main {
       margin: 0.2rem;
       padding: 0.5rem;
       background-color: var(--c-bluish-black); }
+      button:hover{
+        background-color: red;
+      color: white;}
+     button:active{
+      background-color: green;}
+      button:focus{
+        background-color: green;
+        color: honeydew;
+      }
 
 @media only screen and (min-width: 360px) {
   .movie-details > .movie-vote {

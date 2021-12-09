@@ -8,7 +8,7 @@ window.addEventListener('load', loadMovies);
 
 
 function loadMovies() {
-  fetch(`https://api.themoviedb.org/3/movie/popular?page=1&language=en-US&api_key=${API_KEY}`)
+  fetch(LOAD_MOVIES_URL)
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -17,7 +17,7 @@ function loadMovies() {
       throw new Error("Network response was not ok. No resource fetched.");
     })
     .then(objData => {
-      moviesArray = objData.results;
+      moviesArray = objData.Search;
       moviesContainer.innerHTML = movieObjsToHTML(moviesArray, 20);
     })
     .catch(error => console.error(error));

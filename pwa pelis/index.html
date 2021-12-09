@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles/hamburgers.min.css">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="manifest.json">
   <meta name="description"
     content="descubra nuevas películas y consulte datos sobre estas.">
   <meta name="theme-color" content="#385a7c" />
@@ -50,16 +50,16 @@
   <script src="scripts/loadMovies.js"></script>
   <script src="scripts/searchMovies.js"></script>
   <script src="scripts/movieDetails.js"></script>
-  <!-- Instalar PWA spoiler: no anda-->
   <script src="scripts/install.js"></script>
+  <script src="scripts/api.js"></script>
 
   <script>
     //  service worker.
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker.register('service-worker.js')
           .then((reg) => {
-            console.log('Service worker registered.', reg);
+            console.log('Service worker hecho.', reg);
           });
       });
     }

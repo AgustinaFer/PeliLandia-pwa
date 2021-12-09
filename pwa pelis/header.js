@@ -16,7 +16,9 @@ header.innerHTML = `
     </button>
     <nav class="dropdown-content closed" id="dropdown-content">
       <a href="index.html">Inicio</a>
-      <a href="trendings.html">Descubrir peliculas</a>
+      
+      <a href="favs.html">Tus Favoritos</a>
+      
       <a href="search-movies.html">Tu ultima búsqueda</a>
     </nav>
   </div>
